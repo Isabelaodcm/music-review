@@ -8,6 +8,7 @@ const Hero = () => {
   const StyledHero = styled("div")(({theme}) => ({
     backgroundColor: theme.palette.primary.main,
     height: "100vh",
+    paddingTop: "50px"
   }));
 
   const StyledImg = styled("img")(() => ({
@@ -15,7 +16,7 @@ const Hero = () => {
     borderRadius: "2%"
   }));
 
-  const StyledDiv = styled("div")(() => ({
+  const StyledGrid = styled(Grid)(() => ({
     // backgroundColor: "#E36888",
     padding: "15px 25px 15px 25px",
     borderRadius: "2%",
@@ -50,7 +51,7 @@ const Hero = () => {
             ))} */}
         
             <Grid size={{ xs: 6, sm:4, md: 3 }}>
-                <StyledDiv>
+                <StyledGrid>
                 
               <Box>
                 <StyledImg src={theMountain} />
@@ -61,18 +62,18 @@ const Hero = () => {
               <StarIcon/>
               <StarIcon/>
               <StarIcon/><StarHalfIcon/>
-            </StyledDiv>
+            </StyledGrid>
             </Grid>
 
             <Grid size={{ xs: 6, sm:4, md: 3 }}>
-                <StyledDiv>
+                <StyledGrid>
                 
               <Box>
                 <StyledImg src={plasticBeach} />
               </Box>
               <Typography>Plastic Beach</Typography>
               <Typography>Gorillaz</Typography>
-            </StyledDiv>
+            </StyledGrid>
             </Grid>
           </Grid>
         </Container>

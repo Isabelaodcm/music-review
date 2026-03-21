@@ -4,13 +4,22 @@ let theme = createTheme({
     palette: {
         primary: {
             main: "#F2D77F"
+        },
+
+        secondary:{
+            main: "#F08C21" 
         }
     }, 
     typography: {
         body1: {
             fontFamily:"Rock Salt", 
             fontWeight: 550,
+        },
+
+        h3: {
+            fontFamily:"Beth Ellen", 
         }
+    
     }
 })
 
