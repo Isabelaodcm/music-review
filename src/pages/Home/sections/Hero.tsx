@@ -1,10 +1,19 @@
 import { Box, Container, Grid, styled, Typography } from "@mui/material";
-import theMountain from "../../../assets/images/the_mountain.png";
-import plasticBeach from "../../../assets/images/plastic_beach.png";
 import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
+import { Link } from "react-router-dom";
+import { albums } from "../../../../src/data/albums.ts"
+import { reviews } from "../../../data/reviews.ts"
 
 const Hero = () => {
+  const getRating = (albumId: string) => {
+    const review = reviews.find(r => r.albumId === albumId);
+    return review?.rating || 0;
+  };
+
+  const hasReview = (albumId: string) => {
+  return reviews.some(r => r.albumId === albumId);
+};
   const StyledHero = styled("div")(({theme}) => ({
     backgroundColor: theme.palette.primary.main,
     height: "100vh",
@@ -23,7 +32,13 @@ const Hero = () => {
     '&:hover':{
         backgroundColor: "#E36888"
     }
-  }))
+  }));
+
+  const StyledLink = styled(Link)(() => ({
+  textDecoration: "none",
+  color: "inherit"
+}));
+
   return (
     <>
       <StyledHero>
@@ -40,17 +55,34 @@ const Hero = () => {
             ))}
           </Grid> */}
           <Grid container spacing={2}>
-            {/* {Array.from(Array(6)).map((_, index) => (
-                <Grid size={{ xs: 6, sm:4, md: 2 }} key={index}>
-                <Box>
-                    <StyledImg src={theMountain} />
-                </Box>
-                <Typography>The Mountain</Typography>
-                <Typography>Gorillaz</Typography>
-                </Grid>
-            ))} */}
-        
-            <Grid size={{ xs: 6, sm:4, md: 3 }}>
+ {albums
+    .filter((album) => hasReview(album.id)) //mostra so os albuns com uma review associada
+    .map((album) => {
+      const rating = getRating(album.id);
+
+      return (
+        <Grid key={album.id} size={{ xs: 6, sm: 4, md: 3 }}>
+          
+          <StyledLink to={`/reviewDetails/${album.id}`}>
+            <StyledGrid>
+              
+              <Box>
+                <StyledImg src={album.imagem} />
+              </Box>
+
+              <Typography>{album.nome}</Typography>
+              <Typography>{album.artista}</Typography>
+
+              <Typography> <StarIcon/> {rating}</Typography>
+
+            </StyledGrid>
+          </StyledLink>
+
+        </Grid>
+      );
+    })}
+            {/* <Grid size={{ xs: 6, sm:4, md: 3 }}>
+        <Link to="/reviewDetails/theMountain">
                 <StyledGrid>
                 
               <Box>
@@ -63,6 +95,7 @@ const Hero = () => {
               <StarIcon/>
               <StarIcon/><StarHalfIcon/>
             </StyledGrid>
+        </Link>
             </Grid>
 
             <Grid size={{ xs: 6, sm:4, md: 3 }}>
@@ -74,7 +107,7 @@ const Hero = () => {
               <Typography>Plastic Beach</Typography>
               <Typography>Gorillaz</Typography>
             </StyledGrid>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </StyledHero>

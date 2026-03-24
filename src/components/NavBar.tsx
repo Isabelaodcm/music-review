@@ -3,6 +3,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import theme from "../theme"
+import { Link } from "react-router-dom";
 
 
 const NavBar = () => {
@@ -11,6 +12,7 @@ const NavBar = () => {
         display:"flex",
         justifyContent: "space-between",
         backgroundColor:theme.palette.secondary.main,
+        paddingBottom: "20px",
         color:theme.palette.secondary.contrastText
     }));
 
@@ -42,12 +44,12 @@ const NavBar = () => {
           </IconButton>
         </Box>
     </StyledTitleBar>
-    <StyledNavBar>
+    {/* <StyledNavBar>
 
         <MenuItem>Álbuns Preferidos</MenuItem>
         <MenuItem>Artistas Preferidos</MenuItem>
         <MenuItem>Músicas Preferidas</MenuItem>
-    </StyledNavBar>
+    </StyledNavBar> */}
     </AppBar>
     </>
   )
