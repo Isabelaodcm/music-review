@@ -14,13 +14,25 @@ let theme = createTheme({
         }
     }, 
     typography: {
+            fontFamily:"Shantell Sans", 
+        // fontFamily:"Caveat, cursive", 
+        // fontFamily:"Rock Salt", 
+
         body1: {
-            fontFamily:"Rock Salt", 
-            fontWeight: 550,
+            // fontFamily:"Shadows Into Light Two", 
+            fontFamily:"Shantell Sans", 
+        // fontFamily:"Rock Salt", 
+            fontWeight: 500,
+            // fontSize: 21
         },
+
+        h2: {
+            fontWeight: 500,
+        }, 
 
         h3: {
             fontFamily:"Beth Ellen", 
+            fontSize: 50
         }
     
     }

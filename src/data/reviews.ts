@@ -17,6 +17,10 @@ export const reviews = [
   },
     {
     albumId: "5",
+    rating: 4.5
+  },
+      {
+    albumId: "6",
     rating: 4
   }
 ];

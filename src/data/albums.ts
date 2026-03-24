@@ -4,6 +4,7 @@ import folklore from "../assets/images/folklore.png";
 import clubeDaEsquina from "../assets/images/clube_da_esquina.png"
 import danceFever from "../assets/images/dance_fever.png"
 import parklife from "../assets/images/parklife.png"
+
 export const albums = [
   {
     id: "1",
@@ -30,13 +31,13 @@ export const albums = [
     imagem: clubeDaEsquina
   },
     {
-    id: "4",
+    id: "5",
     nome: "Dance Fever",
     artista: "Florence + The Machine",
     imagem: danceFever
   },
     {
-    id: "5",
+    id: "6",
     nome: "Parklife",
     artista: "Blur",
     imagem: parklife
