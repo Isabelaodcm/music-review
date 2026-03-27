@@ -74,7 +74,7 @@ const Hero = () => {
 
                         <Typography>
                           {" "}
-                          <StarIcon /> {rating}
+                          <StarIcon/> {rating}
                         </Typography>
                       </StyledGrid>
                     </StyledLink>
