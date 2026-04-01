@@ -1,11 +1,21 @@
 import { Box, Container, Grid, styled, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import StarHalfIcon from "@mui/icons-material/StarHalf";
 import { Link } from "react-router-dom";
 import { albums } from "../../../../src/data/albums.ts";
 import { reviews } from "../../../data/reviews.ts";
 
 const Hero = () => {
+  // const [albums, setAlbums] = useState<any[]>([]);
+
+//   useEffect(() => {
+//   const fetchData = async () => {
+//     const data = await getAlbums();
+//     setAlbums(data);
+//   };
+
+//   fetchData();
+// }, []);
+
   const getRating = (albumId: string) => {
     const review = reviews.find((r) => r.albumId === albumId);
     return review?.rating || 0;

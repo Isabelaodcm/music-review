@@ -6,7 +6,8 @@ import theme from "./theme.ts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home.tsx";
 import ReviewDetails from "./pages/ReviewDetails/ReviewDetails.tsx";
-import NavBar from "./components/NavBar.tsx";
+import CreateReview from "./pages/CreateReview.tsx";
+import SearchAlbum from "./pages/SearchAlbum.tsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: "/reviewDetails/:id", //rotas aninhadas - identificador unico
         element: <ReviewDetails />,
+      },
+      {
+        path: "/createReview/:albumId",
+        element: <CreateReview />,
+      },
+      {
+        path: "/searchAlbum",
+        element: <SearchAlbum />,
       },
     ],
   },

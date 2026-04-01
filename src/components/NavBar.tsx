@@ -1,4 +1,4 @@
-import { AppBar, Box, IconButton, MenuItem, styled, Toolbar, Typography, useMediaQuery } from "@mui/material"
+import { AppBar, Box, IconButton, styled, Toolbar, Typography, useMediaQuery } from "@mui/material"
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
@@ -13,15 +13,22 @@ const NavBar = () => {
         justifyContent: "space-between",
         backgroundColor:theme.palette.secondary.main,
         paddingBottom: "20px",
+        paddingTop: "10px",
         color:theme.palette.secondary.contrastText
+        
     }));
 
-    const StyledNavBar = styled(Toolbar)(({theme}) => ({
-        // display:"flex",
-        // justifyContent: "space-between",
-        color:theme.palette.secondary.contrastText,
-        backgroundColor:theme.palette.secondary.main
-    }));
+     const StyledLink = styled(Link)(() => ({
+    textDecoration: "none",
+    color: "inherit",
+  }));
+
+    // const StyledNavBar = styled(Toolbar)(({theme}) => ({
+    //     // display:"flex",
+    //     // justifyContent: "space-between",
+    //     color:theme.palette.secondary.contrastText,
+    //     backgroundColor:theme.palette.secondary.main
+    // }));
 
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -32,17 +39,25 @@ const NavBar = () => {
     <StyledTitleBar>
     <Typography variant="h3">MusicReview</Typography>
             <Box>
+          <StyledLink to={"/"}>
+
           <IconButton color="inherit">
             {/* < HomeIcon fontSize="large"/> */}
             <HomeIcon sx={{ fontSize: isMobile ? 20 : 32 }} />
           </IconButton>
+          </StyledLink>
           <IconButton color="inherit">
             <SearchIcon sx={{ fontSize: isMobile ? 20 : 32 }}/>
           </IconButton>
+
+          <StyledLink to="/searchAlbum">
+
           <IconButton color="inherit">
             <AddIcon sx={{ fontSize: isMobile ? 20 : 32 }}/>
           </IconButton>
+          </StyledLink>
         </Box>
+      
     </StyledTitleBar>
     {/* <StyledNavBar>
 
