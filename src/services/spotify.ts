@@ -1,5 +1,5 @@
-const CLIENT_ID = "0b0c7c16e18d45d9bdfd14dd54d514dc";
-const CLIENT_SECRET = "99d30f391544459ab27dc31d3b3984fe";
+const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+const CLIENT_SECRET = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
 
 export const getSpotifyToken = async () => {
   const response = await fetch("https://accounts.spotify.com/api/token", {

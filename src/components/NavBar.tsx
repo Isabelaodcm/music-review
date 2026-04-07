@@ -40,18 +40,17 @@ const NavBar = () => {
     <Typography variant="h3">MusicReview</Typography>
             <Box>
           <StyledLink to={"/"}>
-
           <IconButton color="inherit">
             {/* < HomeIcon fontSize="large"/> */}
             <HomeIcon sx={{ fontSize: isMobile ? 20 : 32 }} />
           </IconButton>
+
           </StyledLink>
-          <IconButton color="inherit">
+          {/* <IconButton color="inherit">
             <SearchIcon sx={{ fontSize: isMobile ? 20 : 32 }}/>
-          </IconButton>
+          </IconButton> */}
 
           <StyledLink to="/searchAlbum">
-
           <IconButton color="inherit">
             <AddIcon sx={{ fontSize: isMobile ? 20 : 32 }}/>
           </IconButton>

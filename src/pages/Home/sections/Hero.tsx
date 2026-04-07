@@ -1,25 +1,31 @@
 import { Box, Container, Grid, styled, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { Link } from "react-router-dom";
-import { albums } from "../../../../src/data/albums.ts";
-import { reviews } from "../../../data/reviews.ts";
+import { useEffect, useState } from "react";
+import { getAlbumDetails } from "../../../services/spotify.ts";
 
 const Hero = () => {
-  // const [albums, setAlbums] = useState<any[]>([]);
+const [reviews, setReviews] = useState<any[]>([]);
 
-//   useEffect(() => {
-//   const fetchData = async () => {
-//     const data = await getAlbums();
-//     setAlbums(data);
-//   };
+  const [albums, setAlbums] = useState<any[]>([]);
 
-//   fetchData();
-// }, []);
+  useEffect(() => {
+  const fetchData = async () => {
+    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
 
-  const getRating = (albumId: string) => {
-    const review = reviews.find((r) => r.albumId === albumId);
-    return review?.rating || 0;
+    setReviews(reviews);
+
+    const albumPromises = reviews.map((review: any) =>
+      getAlbumDetails(review.albumId)
+    );
+
+    const albumsData = await Promise.all(albumPromises);
+
+    setAlbums(albumsData);
   };
+
+  fetchData();
+}, []);
 
   const hasReview = (albumId: string) => {
     return reviews.some((r) => r.albumId === albumId);
@@ -54,37 +60,27 @@ const Hero = () => {
     <>
       <StyledHero>
         <Container maxWidth="lg">
-          {/* <Grid
-            container
-            spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
-          >
-            {Array.from(Array(6)).map((_, index) => (
-              <Grid key={index} size={{ xs: 2, sm: 4, md: 4 }}>
-                <div>{index + 1}</div>
-              </Grid>
-            ))}
-          </Grid> */}
           <Grid container spacing={2}>
             {albums
-              .filter((album) => hasReview(album.id)) //mostra so os albuns com uma review associada
+              .filter((album) => hasReview(album.id))
               .map((album) => {
-                const rating = getRating(album.id);
+                // const rating = getRating(album.id);
+                const review = reviews.find((r) => r.albumId === album.id);
 
                 return (
                   <Grid key={album.id} size={{ xs: 6, sm: 4, md: 3 }}>
                     <StyledLink to={`/reviewDetails/${album.id}`}>
                       <StyledGrid>
                         <Box>
-                          <StyledImg src={album.imagem} />
+                          <StyledImg src={album.images[0]?.url} />
                         </Box>
 
-                        <Typography variant="body1">{album.nome}</Typography>
-                        <Typography>{album.artista}</Typography>
+                        <Typography variant="body1">{album.name}</Typography>
+                        <Typography>{album.artists.map((a: any) => a.name).join(", ")}</Typography>
 
                         <Typography>
                           {" "}
-                          <StarIcon/> {rating}
+                          <StarIcon/> {review.average}
                         </Typography>
                       </StyledGrid>
                     </StyledLink>

@@ -9,20 +9,9 @@ import ReviewDetails from "./pages/ReviewDetails/ReviewDetails.tsx";
 import CreateReview from "./pages/CreateReview.tsx";
 import SearchAlbum from "./pages/SearchAlbum.tsx";
 
-// const router = createBrowserRouter([
-//   {
-//     path:"/",
-//     element: <Home/>
-//   },
-//   {
-//     path: "reviewDetails",
-//     element: <ReviewDetails/>
-//   }
-// ])
-
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "",
     element: <App />,
     children: [
       //vai conter um array de objetos que serao as paginas
@@ -44,7 +33,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+],
+{
+  basename: "/music-review",
+});
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
